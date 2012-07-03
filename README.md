@@ -22,3 +22,18 @@ The file page should display the plugin Tools selection to Export To csv in the 
 Select this to export the first table into a csv file. 
 The filename and path can be specified in the /conf/default.php file. 
 It currently defaults to table.csv in the dokuwiki base install folder.
+
+License
+=======
+Copyright (C) Tom Cafferty <tcafferty@glocalfocal.com>
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; version 2 of the License
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+
