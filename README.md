@@ -4,7 +4,7 @@ plugin-table2csv
 Create a csv file from the first table on a dokuwiki page
 
 Installation
-===========+
+============
 1. Install the Tools plugin.
 2. Modify Tools plugin. 
    Upload the files from this release's /tools folder into the respective plugins/tools folders overwriting the baseline tools plugin files. 
