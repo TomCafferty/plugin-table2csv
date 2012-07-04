@@ -20,7 +20,7 @@ function scrapeTable($ID, $fileext) {
         if ((strpos($row,'<th')===false))
           preg_match_all("|<td(.*)</td>|U",$row,$cells);
         else
-		  preg_match_all("|<th(.*)</th>|U",$row,$cells);
+		  preg_match_all("|<t(.*)</t(.*)>|U",$row,$cells);
 		  
 		$cell_index=0;
 		foreach ($cells[0] as $cell) {
