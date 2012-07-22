@@ -5,19 +5,16 @@ Create a csv file from the first table on a dokuwiki page
 
 Installation
 ============
-1. Install the Tools plugin.
-2. Modify Tools plugin. 
-   Upload the files from this release's /tools folder into the respective plugins/tools folders overwriting the baseline tools plugin files. 
-   (Note: If you were using the tools plugin save your current tools/conf/default.php file. 
-    The update will turn off all other tools. 
-    After the update modify the new default.php file to turn the tools you were using back on in the variable $conf['tools']).
-3. Install the tabl22csv plugin using the Plugin Manager and the download URL above. 
+1. Install the branch version of the Tools plugin from https://github.com/TomCafferty/plugin-tools/zipball/master.
+2. Install the table2csv plugin using the Plugin Manager and the download URL above. 
    If you install this plugin manually, make sure it is installed in lib/plugins/table2csv/
 
 Usage
 =====
 Add the following plugin code. This will provide an export selection. 
   ~~TOOLS:both~~
+Add the following plugin code. This will be used to identify the table because by specifying a start marker of any text on the page the plugin will select the first table following the start marker.  The startmarker cannot be part of the table such as a column heading or caption. Replace "any text" with your start marker. No quotes are used unless thay are in your start marker.
+<table2csv>&startMarker=any text&</table2csv>
 The file page should display the plugin Tools selection to Export To csv in the top and bottom right corners of the page. 
 Select this to export the first table into a csv file. 
 The filename and path can be specified in the /conf/default.php file. 
