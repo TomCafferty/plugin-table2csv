@@ -19,9 +19,9 @@ class action_plugin_table2csv extends DokuWiki_Action_Plugin {
         return array(
             'author' => 'Tom Cafferty',
             'email'  => 'tcafferty@glocalfocal.com',
-            'date'   => '2012-07-02',
+            'date'   => '2012-07-22',
             'name'   => 'table2csv',
-            'desc'   => 'export first table on page to csv file',
+            'desc'   => 'export table on page to csv file',
             'url'    => 'http://www.dokuwiki.org/plugin:table2csv'
         );
     }
@@ -53,9 +53,12 @@ class action_plugin_table2csv extends DokuWiki_Action_Plugin {
         require_once ('getTableData.php');
         $event->preventDefault();
 
+        //get start marker
+        $sm = p_get_metadata($ID,'table2csv');
+        
         // get page data
         $fileext = $this->getConf('filepath');      
-        $html = scrapeTable($ID,$fileext);
+        $html = scrapeTable2Csv($ID,$fileext,$sm);
        
         // remain on current page
         header("HTTP/1.1 204 No Content"); 
