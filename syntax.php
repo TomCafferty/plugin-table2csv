@@ -29,7 +29,7 @@ class syntax_plugin_table2csv extends DokuWiki_Syntax_Plugin {
       'email' => 'tcafferty@glocalfocal.com',
       'date' => '2012-07-08',
       'name' => 'Table2csv plugin (syntax component)',
-      'desc' => 'Provide table identification<br />Syntax: <table2csv></table2csv>.',
+      'desc' => 'Provide table identification',
       'url' => 'http://www.dokuwiki.org/plugin:table2csv',
     );
   }
