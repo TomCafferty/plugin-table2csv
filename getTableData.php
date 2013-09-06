@@ -1,11 +1,13 @@
 <?php
-function scrapeTable2Csv($ID, $fileext, $startMarker) {
-    $front = DOKU_URL;
-    $front = str_replace (DOKU_BASE,'',$front);
-    $url =   $front. wl($ID); 
+function scrapeTable2Csv($dokuPageId, $fileext, $startMarker) {
 
     $csv_data = '';
-    $raw = file_get_contents($url);
+    $file = wikiFN($dokuPageId);
+    $data = io_readWikiPage($file, $dokuPageId, $rev=false);
+    $raw = p_render('xhtml',p_get_instructions($data),$info);
+    if ($raw == false) 
+       return false;
+   
     $newlines = array("\t","\n","\r","\x20\x20","\0","\x0B");
     $content = str_replace($newlines, "", html_entity_decode($raw));
        
