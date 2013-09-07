@@ -47,7 +47,10 @@ class action_plugin_table2csv extends DokuWiki_Action_Plugin {
         if ($ACT != 'export_csv' ) return false;
 
         // check user's rights
-        if ( auth_quickaclcheck($ID) < AUTH_READ ) return false;
+        if ( auth_quickaclcheck($ID) < AUTH_READ ) {
+            msg(sprintf('Forbidden access to page ' . $ID));
+            return false;
+        }
 
         // it's ours, no one else's
         require_once ('getTableData.php');
@@ -60,8 +63,12 @@ class action_plugin_table2csv extends DokuWiki_Action_Plugin {
         $fileext = $this->getConf('filepath');      
         $html = scrapeTable2Csv($ID,$fileext,$sm);
        
+        if ($html === false) {
+            return false;
+        } else {
         // remain on current page
         header("HTTP/1.1 204 No Content"); 
         exit();        
+        }       
     }
 }

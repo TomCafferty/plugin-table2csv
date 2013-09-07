@@ -5,8 +5,10 @@ function scrapeTable2Csv($dokuPageId, $fileext, $startMarker) {
     $file = wikiFN($dokuPageId);
     $data = io_readWikiPage($file, $dokuPageId, $rev=false);
     $raw = p_render('xhtml',p_get_instructions($data),$info);
-    if ($raw == false) 
+    if ($raw == false) {
+        msg(sprintf('Failed to read page ' . $dokuPageId));
        return false;
+    }
    
     $newlines = array("\t","\n","\r","\x20\x20","\0","\x0B");
     $content = str_replace($newlines, "", html_entity_decode($raw));
@@ -20,7 +22,11 @@ function scrapeTable2Csv($dokuPageId, $fileext, $startMarker) {
     
     preg_match_all("|<tr(.*)</tr>|U",$table,$rows);
     
-    $fp = fopen($fileext, 'w');
+    $fp = @fopen($fileext, 'w');
+    if ($fp === false) {
+       msg(sprintf('Failed to open write file ' . $fileext));
+       return false;
+    }
     $row_index=0;
     $numHeadings = 0;
     foreach ($rows[0] as $row){
