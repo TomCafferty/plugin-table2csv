@@ -1,7 +1,7 @@
 base table2csv
 author tom_c
 email tcafferty@glocalfocal.com
-date 2012-07-22
+date 2013-09-05
 name Table2csv Plugin
 desc exports a table to a csv file
 url http://www.dokuwiki.org/plugin:table2csv
